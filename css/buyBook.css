@@ -1,0 +1,131 @@
+html,body{
+	width: 100%;
+}
+
+/*头部部分*/
+.header {
+	width: 100%;
+	background-color: rgb(102,102,102);
+}
+.header_con{
+	width: 1024px;
+	height: 75px;
+	margin: 0 auto;
+	padding-top: 20px;
+}
+.header .header_con .logo{
+	width: 103px;
+	height: 57px;
+	background: url(../img/logo.png) left center no-repeat;	
+}
+
+/*body部分*/
+.body{
+	width: 100%;
+}
+.bookHead {
+	border-bottom: 1px solid #CCCCCC;
+	width: 1000px;
+	margin: 0 auto;
+}
+.bookHead .bookListName{
+	font-size: 40px;
+	margin: 40px 20px 0px 20px;
+}
+.bookHead .stuInfo{
+	height: 40px;
+	overflow: hidden;
+	padding: 50px 50px 20px 60px;
+}
+.bookHead .stuInfo span,
+.bookHead .stuInfo input{
+	float: left;
+	height: 25px;
+	margin-top: 5px;
+}
+.bookHead .stuInfo span{
+	display: block;
+	font-size: 20px;
+	/*width: 200px;*/
+}
+.bookHead .stuInfo input{
+	width: 200px;
+	margin-right: 140px;
+	height: 20px;
+}
+.bookHead .stuInfo .buy{
+	float: right;
+}
+
+
+
+.bookInfo {
+	margin: 0 auto;
+	width: 900px;
+	overflow: hidden;
+}
+.bookInfo .book {
+	/*margin: 0 auto;*/
+	overflow: hidden;
+	padding: 0 25px 30px 25px;
+	width: 850px;
+	border-bottom: 1px solid #c3c3c3;
+	padding-bottom: 20px;
+	position: relative;
+}
+.bookInfo .book span,
+.bookInfo .book input {
+	margin-top:40px;
+	font-size: 18px;
+	display: block;
+	float: left;
+}
+.bookInfo .book label{
+	margin-top:36px;
+	font-size: 18px;
+	display: block;
+	float: left;
+	margin-left: 10px;
+}
+.bookInfo .name {
+	width: 300px;
+}
+.bookInfo .discount,
+.bookInfo .price {
+	width: 140px;
+}
+.bookInfo .disPrice{
+	width: 180px;
+}
+.bookInfo .num{
+	clear: left;
+	width: 300px;
+}
+.bookInfo .show{
+	font-size: 12px;
+	position: absolute;
+	right: 30px;
+	bottom: 10px;
+}
+.bookInfo .stuInfo{
+	margin: 20px 50px 15px 50px;
+	width: 800px;
+	height: 0px;
+	overflow: hidden;
+	opacity: 0;
+	transition: all 1s ease;
+}
+.bookInfo .stuInfo span {
+	font-size: 14px;
+	display: block;
+	float: left;
+	margin-bottom: 25px;
+	height: 30px;
+	line-height: 30px;
+}
+.bookInfo .stuInfo .stuName{
+	width: 150px;
+}
+.bookInfo .stuInfo .stuNum{
+	width: 250px;
+}

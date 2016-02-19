@@ -1,0 +1,192 @@
+html,body{
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+/*头部部分*/
+.header {
+	width: 100%;
+	background-color: rgb(102,102,102);
+}
+.header_con{
+	width: 1024px;
+	height: 75px;
+	margin: 0 auto;
+	padding-top: 20px;
+}
+.header .header_con .logo{
+	width: 103px;
+	height: 57px;
+	background: url(../img/logo.png) left center no-repeat;	
+}
+
+/*body部分*/
+.body{
+	width: 100%;
+}
+.body .title {
+	width: 1000px;
+	overflow: hidden;
+	height: 120px;
+	border-bottom: 1px solid #000000;
+	margin: 0 auto;
+	padding: 0 50px;
+}
+.body .title span{
+	display: block;
+	line-height: 120px;
+}
+.body .title .bookListName{
+	font-size: 40px;
+	float: left;
+	margin-right: ;
+}
+.body .title .link {
+	width: 600px;
+	margin: 0 auto;
+	text-align: center;
+	font-size: 24px;
+}
+.body .title .publish{
+	margin-top: 60px;
+	float: right;
+}
+.body .bookInfo {
+	margin: 0 auto;
+	width: 900px;
+	overflow: hidden;
+}
+.body .bookInfo .book {
+	/*margin: 0 auto;*/
+	overflow: hidden;
+	padding: 0 25px 30px 25px;
+	width: 850px;
+	border-bottom: 1px solid #c3c3c3;
+	padding-bottom: 20px;
+	position: relative;
+}
+.body .bookInfo .book span{
+	margin-top:40px;
+	font-size: 18px;
+	display: block;
+	float: left;
+	margin-right: 0px;
+}
+.body .bookInfo .name {
+	width: 300px;
+}
+.body .bookInfo .discount,
+.body .bookInfo .price {
+	width: 180px;
+}
+.body .bookInfo .disPrice,
+.body .bookInfo .num {
+	width: 180px;
+}
+.body .bookInfo .num{
+	clear: left;
+	width: 300px;
+}
+.body .bookInfo .show{
+	font-size: 12px;
+	position: absolute;
+	right: 30px;
+	bottom: 10px;
+}
+.body .bookInfo .stuInfo{
+	margin: 20px 50px 15px 50px;
+	width: 800px;
+	height: 0px;
+	overflow: hidden;
+	opacity: 0;
+	transition: all 1s ease;
+}
+.body .bookInfo .stuInfo span {
+	font-size: 14px;
+	display: block;
+	float: left;
+	margin-bottom: 25px;
+	height: 30px;
+	line-height: 30px;
+}
+.body .bookInfo .stuInfo .stuName{
+	width: 150px;
+}
+.body .bookInfo .stuInfo .stuNum{
+	width: 250px;
+}
+.body .sumPriceCon {
+	width: 100%;
+	height:100px;
+	border-top: 1px solid #C3C3C3;
+	overflow: hidden;
+	position: fixed;
+	bottom: 0px;
+	right: 0px;
+	background: rgba(255,255,204,1);
+}
+.body .sumPriceCon .allSumPrice{
+	line-height: 100px;
+	float: right;
+	display: block;
+	font-size: 30px;
+	color: red;
+	font-weight: bold;
+	margin-right: 60px;
+}
+
+/*遮罩层*/
+.mask {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.6);
+	/*z-index: -1;*/
+	display: none;
+	transition: background-color 1s ease;
+}
+.mask .dialog{
+	background-color: #ffffff;
+	width: 600px;
+	height: 400px;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	margin-left: -300px;
+	margin-top: -200px;
+}
+.mask .dialog .close{
+	position: relative;
+	right: 20px;
+	top: 15px;
+	width: 32px;
+	height: 32px;
+	float: right;
+	background: url(../img/icon_close.png) left center no-repeat;
+	cursor: pointer;
+}
+.mask .dialog .title{
+	padding: 30px 60px;
+	font-size: 36px;
+}
+.mask .dialog .content{
+	border-top: 1px solid #CCCCCC;
+	width: 500px;
+	height: 50px;
+	font-size: 18px;
+	padding: 50px 10px;
+	margin: 0 20px;
+}
+.mask .dialog .content span,
+.mask .dialog .content a{
+	margin-top: 50px;
+	float: right;
+	margin-right: 30px;
+}
+.mask .dialog .content a{
+	text-decoration: underline;
+	color: blue;
+}

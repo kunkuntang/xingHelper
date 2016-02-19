@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>星购书</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/addBookList.css" />
+	</head>
+
+	<body>
+		<div class="header">
+			<div class="header_con">
+				<div class="logo"></div>
+				<div class="title"></div>
+			</div>
+		</div>
+		<div class="body">
+			<div class="body_con">
+				<div class="title">
+					<div class="listName">大二上学年书单</div>
+					<div class="edit btn small">编辑</div>
+				</div>
+				<div class="bookList">
+					<form id="bookShelf" action="doSub.php" method="get">
+						<!--<div id="book10" class="bookInfo">
+							<span>书名：</span>
+							<input class="bookName" type="text" name="bookName" />
+							<span>价格：</span>
+							<input class="price" type="number" name="price" />
+							<span>折扣：</span>
+							<input class="discount" type="number" name="bookNum" />
+						</div>-->
+					</form>
+						<div id="add" class="add btn small">添加</div>
+						<input type="text" value="" style="display: none;">
+				</div>
+						<div class="fun">
+							<!--<input type="submit" name="" id="" value="提交" />-->
+							<div class="publish btn small">发布</div>
+							<div class="save btn small">保存</div>
+						</div>
+			</div>
+		</div>
+		<script src="js/zepto.min.js"></script>
+		<script src="js/index.js"></script>
+	</body>
+
+</html>

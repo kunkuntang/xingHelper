@@ -1,0 +1,149 @@
+CSS初始化
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+blockquote,
+
+/* structural elements 结构元素 */
+
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+
+/* list elements 列表元素 */
+
+pre,
+
+/* text formatting elements 文本格式元素 */
+
+fieldset,
+button,
+input,
+textarea,
+
+/* form elements 表单元素 */
+
+th,
+td {
+	/* table elements 表格元素 */
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	list-style: none;
+}
+
+body {
+	font-size:12px;
+}
+img {
+	border: none;
+}
+textarea {
+	resize: none;
+}
+a {
+	text-decoration: none;
+	color: #000;
+}body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+blockquote,
+
+/* structural elements 结构元素 */
+
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+
+/* list elements 列表元素 */
+
+pre,
+
+/* text formatting elements 文本格式元素 */
+
+fieldset,
+button,
+input,
+textarea,
+
+/* form elements 表单元素 */
+
+th,
+td {
+	/* table elements 表格元素 */
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	list-style: none;
+}
+
+body {
+	font-size:12px;
+}
+img {
+	border: none;
+}
+textarea {
+	resize: none;
+}
+a {
+	text-decoration: none;
+}
+
+
+清浮动
+
+.clearfix:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.clearfix{zoom: 1;}
+
+.btn{
+	
+	border: 1px solid #000;
+	text-align: center;
+	cursor: pointer;
+}
+.big {
+	width: 130px;
+	height: 40px;
+	font-size: 18px;
+	line-height: 40px;
+}
+.middle{
+	width: 90px;
+	height: 40px;
+	font-size: 16px;
+	line-height: 40px;
+}
+.small{
+	width: 75px;
+	height: 30px;
+	font-size: 12px;
+	line-height: 30px;
+}

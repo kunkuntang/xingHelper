@@ -1,0 +1,91 @@
+html,body{
+	width: 100%;
+}
+
+/*头部部分*/
+.header {
+	width: 100%;
+	background-color: rgb(102,102,102);
+}
+.header_con{
+	width: 1024px;
+	height: 75px;
+	margin: 0 auto;
+	padding-top: 20px;
+}
+.header .header_con .logo{
+	width: 103px;
+	height: 57px;
+	background: url(../img/logo.png) left center no-repeat;	
+}
+
+/*body部分*/
+.body{
+	width: 100%;
+}
+.body .body_con{
+	width: 1024px;
+	margin: 0 auto;
+}
+.body .body_con .addPart{
+	width: 100%;
+	height: 60px;
+	border-bottom: 2px solid #000000;
+	margin: 0 auto;
+}
+.body .body_con .addPart #add{
+	margin-top: 20px;
+	margin-left: 40px;
+}
+
+.body .body_con .BookList {
+	width: 900px;
+	border-bottom: 1px solid #ccc;
+	margin: 0 auto;
+}
+
+#list1{
+	width: 860px;
+	height: 100px;
+	text-align: center;
+	padding-right: 0px;
+	padding-left: 20px;
+}
+
+.body .body_con .BookList .bookName,
+.body .body_con .BookList .link {
+	display: block;
+	float: left;
+	margin-right: 60px;
+	margin-top: 20px;
+}
+.body .body_con .BookList .bookName {
+	line-height: 60px;
+	font-size: 40px;
+	width: 110px;
+	height: 60px;
+	cursor: pointer;
+}
+.body .body_con .BookList .link {
+	line-height: 60px;
+	font-size: 24px;
+	width: 400px;
+	height: 60px;
+}
+.body .body_con .BookList a,
+.body .body_con .BookList .publish{
+	margin-top: 30px;
+	line-height: 40px;
+	float: right;
+	cursor: pointer;
+}
+.body .body_con .BookList a {
+	font-size: 14px;
+	display: block;
+	margin-right: 30px;
+}
+
+.body .body_con .BookList .publish{
+	float: right;
+	font-size: 16px;
+}

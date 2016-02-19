@@ -1,0 +1,103 @@
+html,body{
+	width: 100%;
+}
+
+/*头部部分*/
+.header {
+	width: 100%;
+	background-color: rgb(102,102,102);
+}
+.header_con{
+	width: 1024px;
+	height: 75px;
+	margin: 0 auto;
+	padding-top: 20px;
+}
+.header .header_con .logo{
+	width: 103px;
+	height: 57px;
+	background: url(../img/logo.png) left center no-repeat;	
+}
+
+/*body部分*/
+.body{
+	width: 100%;
+}
+.body .body_con{
+	width: 1024px;
+	margin: 0 auto;
+}
+.body .body_con .title{
+	width: 900px;
+	overflow: hidden;
+	margin: 0 auto;
+	height: 70px;
+	border-bottom: 2px solid #000000;
+	padding: 30px 40px 0px 30px;
+}
+.body .body_con .title .listName {
+	font-size: 32px;
+	height: 50px;
+	float: left;
+	line-height: 50px;
+}
+.body .body_con .title .edit {
+	float: right;
+	margin-top: 25px;
+}
+
+.body .body_con .bookList{
+	width: 850px;
+	margin: 0 auto;
+	min-height: 600px;
+}
+.body .body_con .bookList span{
+	font-size: 18px;
+	margin-right: 0px;
+}
+.body .body_con .bookList .bookInfo{
+	border-bottom: 1px solid #ccc;
+	line-height: 80px;
+	width: 780px;
+	height: 80px;
+	padding: 0px 35px;
+}
+.body .body_con .bookList input{
+	height: 25px;
+	margin-right: 40px;
+}
+.body .body_con .bookList .bookName {
+	width: 350px;
+}
+.body .body_con .bookList .price {
+	width: 50px;
+}
+.body .body_con .bookList .discount {
+	width: 50px;
+}
+.body .body_con .bookList .add{
+	margin-top: 20px;
+	margin-left: 60px;
+}
+.body .body_con .fun{
+	/*border-top: 1px solid #C2C2C2;*/
+	width: 100%;
+	padding-top: 30px;
+	overflow: hidden;
+}
+.body .body_con .fun div{
+	float: right;
+	margin-right: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+

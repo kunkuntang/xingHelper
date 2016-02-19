@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/checkBookList.css" />
+	</head>
+
+	<body>
+		<div class="header">
+			<div class="header_con">
+				<div class="logo"></div>
+				<div class="title"></div>
+			</div>
+		</div>
+		<div class="body">
+			<!--书单名-->
+			<div class="title">
+				<div class="btn middle publish" id="publish">发布</div>
+				<span class="bookListName">书单1</span>
+				<span class="link">链接：www.xingkong.us/123456789</span>
+			</div>
+			<!--书单-->
+			<div class="bookInfo">
+				<!--单本书的详细信息-->
+				<div class="book">
+					<span class="name">书名:CSS3</span>
+					<span class="price">价格:22元</span>
+					<span class="discount">折扣:8折</span>
+					<span class="disPrice">折后单价:17.6元</span>
+					<span class="num">人数:22人</span>
+					<span class="sumPrice">折后总价:387.2元</span>
+					<a href="#" class="show" id="show">展开︾</a>
+				</div>
+				<!--学生姓名学号-->
+				<div class="stuInfo" id="stuInfo">
+					<span class="stuName">姓名：</span><span class="stuNum">学号：</span>
+					<span class="stuName">姓名：</span><span class="stuNum">学号：</span>
+					<span class="stuName">姓名：</span><span class="stuNum">学号：</span>
+					<span class="stuName">姓名：</span><span class="stuNum">学号：</span>
+					<span class="stuName">姓名：</span><span class="stuNum">学号：</span>
+				</div>
+			</div>
+			<!--底下总价栏-->
+			<div class="sumPriceCon">
+				<span class="allSumPrice">总价：200元</span>
+			</div>
+		</div>	
+			<!--遮罩层-->
+			<div class="mask" id="mask">
+				<div class="dialog" id="dialog">
+					<div class="close" id="close"></div>
+					<div class="title">分享</div>
+					<div class="content">
+						<p>复制链接后发送到需要购买的人：</p>
+						<a href="#">复制链接</a>
+						<span>www.xingkong.us/123456789</span>
+					</div>
+				</div>
+			</div>
+		
+		
+			<script type="text/javascript">
+				var dialog = document.getElementById('dialog');
+				var publish = document.getElementById('publish');
+				var clsoeBtn = document.getElementById('close');
+				var maskCon = document.getElementById('mask');
+				publish.onclick = function(){
+					/*maskCon.style.zIndex = 1;*/
+					maskCon.style.display = 'block';
+					maskCon.style.backgroundColor = "rgba(0,0,0,0.6)";
+				}
+				clsoeBtn.onclick = function(){
+					/*maskCon.style.zIndex = -1;*/
+					maskCon.style.display = 'none';
+					maskCon.style.backgroundColor = "rgba(0,0,0,0)";
+				}
+			</script>
+			
+			<script type="text/javascript">
+				var stu = document.getElementById('stuInfo').getElementsByTagName('span');
+				var stuNum = Math.ceil(stu.length/4);
+				var showBtn = document.getElementById('show');
+				var stuInfo = document.getElementById('stuInfo');
+				var isShow = true;
+				showBtn.onclick = function(){
+					if(isShow){
+						stuInfo.style.borderBottom = '1px solid #000000';
+						stuInfo.style.height = stuNum*55 + 'px';
+						stuInfo.style.opacity = 1;
+						isShow = false;
+					}else{
+						stuInfo.style.borderBottom = '1px solid #ffffff';
+						stuInfo.style.height = 0 + 'px';
+						stuInfo.style.opacity = 0;
+						isShow = true;
+					}
+				}
+			</script>
+	</body>
+
+</html>
