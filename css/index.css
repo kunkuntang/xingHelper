@@ -44,7 +44,7 @@ html,body{
 	margin: 0 auto;
 }
 
-#list1{
+#list{
 	width: 860px;
 	height: 100px;
 	text-align: center;
@@ -65,6 +65,7 @@ html,body{
 	width: 110px;
 	height: 60px;
 	cursor: pointer;
+	overflow: hidden;
 }
 .body .body_con .BookList .link {
 	line-height: 60px;

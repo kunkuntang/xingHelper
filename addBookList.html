@@ -18,11 +18,12 @@
 		<div class="body">
 			<div class="body_con">
 				<div class="title">
-					<div class="listName">大二上学年书单</div>
-					<div class="edit btn small">编辑</div>
+					<div class="listName" id="listName">书单1</div>
+					<input type="text" value="" placeholder="" id="tempListName" style="display:none" class="listName">
+					<div class="edit btn small" id="listEdit">编辑</div>
 				</div>
 				<div class="bookList">
-					<form id="bookShelf" action="doSub.php" method="get">
+					<form id="bookShelf" action="doAction.php?act=save" method="post" name="bookShelf">
 						<!--<div id="book10" class="bookInfo">
 							<span>书名：</span>
 							<input class="bookName" type="text" name="bookName" />
@@ -31,19 +32,23 @@
 							<span>折扣：</span>
 							<input class="discount" type="number" name="bookNum" />
 						</div>-->
+						<input type="text" value="1" style="display: none;" name="bookSumNum" id="bookSumNum">
+						<input type="text" value="" style="display: none;" name="bookListName" id="bookListName">
 					</form>
 						<div id="add" class="add btn small">添加</div>
-						<input type="text" value="" style="display: none;">
 				</div>
 						<div class="fun">
-							<!--<input type="submit" name="" id="" value="提交" />-->
-							<div class="publish btn small">发布</div>
-							<div class="save btn small">保存</div>
+							<input class="publish btn small" type="submit" id="" value="提交" form="bookShelf" />
+							<a class="publish btn small" onclick="doAction.php?act=publish">发布</a>
+							<a class="save btn small" href="doAction.php?act=save">保存</a>
 						</div>
 			</div>
 		</div>
 		<script src="js/zepto.min.js"></script>
 		<script src="js/index.js"></script>
+		<script>
+
+		</script>
 	</body>
 
 </html>
