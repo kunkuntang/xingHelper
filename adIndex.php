@@ -4,12 +4,15 @@ $isLink = connect();
 if(!$isLink){
 	exit("数据库转接失败！");
 }
-$sql = "select * from BookList";
+$sql = "select * from booklistname";
 $totalRow = getResultRow($sql);
-$sql = "select booklistname from booklistname";
-$rows = fetchAll($sql);
-if(!$rows){
-	echo "没有书单！！";
+if($totalRow){
+	$sql = "select booklistname,id from booklistname";
+	$rows = fetchAll($sql);
+}else{
+	$rows = array();
+
+	echo "<script>alert( '没有书单！！请添加！！');</script>";
 }
 
 
@@ -37,15 +40,25 @@ if(!$rows){
 				</div>
 				<div class="BookList">
 				<?php foreach ($rows as $row): ?>
-					<div id="list">
-						<span class="bookName"><?php echo $row['booklistname']; ?></span>
+					<div class="list">
+						<a class="bookName" href="checkBookList.php?id=<?php echo $row['id'] ?>"><?php echo $row['booklistname']; ?></a>
 						<span class="link"></span>
 						<div class="btn middle publish" onclick="doAction.php?act=publish">发布</div>
-						<a href="editBookLisk.php">编辑</a>
+						<a href="editBookList.php?id=<?php echo $row['id'];?>">编辑</a>
+						<a onclick="delList(<?php echo $row['id'];?>)">删除</a>
 					</div>
 				<?php endforeach;?>
 				</div>
 			</div>
 		</div>
 	</body>
+	<script src='js/zepto.min.js'></script>
+	<script src='js/adIndex.js'></script>
+	<script>
+		function delList(id){
+			if(window.confirm("确定要删除吗？")){
+				window.location="doAction.php?act=delList&id="+id;
+			}
+		}
+	</script>
 </html>

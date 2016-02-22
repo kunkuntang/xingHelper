@@ -1,3 +1,27 @@
+<?php
+	require_once 'lib/mysql.func.php';
+	require_once 'lib/alertMes.php';
+	$isLink = connect();
+	if(!$isLink){
+		exit("数据库转接失败！");
+	}
+	$id = $_REQUEST['id'];
+	$sql = "select booklistname from booklistname where id={$id}";
+	$listname = fetchOne($sql);
+
+	$sql = "select * from booklist";
+	$totalRow = getResultRow($sql);
+	if($totalRow){
+		$sql = "select bookname,bookprice,discount from booklist where listcode={$id}";
+		
+		$booklist = fetchAll($sql);
+	}else{
+		$booklist = array();
+		//alertMes("没有此书单的任何信息！！请添加！","addBookList.html");
+	}
+	$totalPrice = null;
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -17,34 +41,37 @@
 		</div>
 		<div class="body">
 			<!--书单名-->
-			<div class="title">
+			<div class="title"> 
 				<div class="btn middle publish" id="publish">发布</div>
-				<span class="bookListName">书单1</span>
+				<a class="back" href="adIndex.php">返回</a>
+				<span class="bookListName"><?php echo $listname['booklistname'];?></span>
 				<span class="link">链接：www.xingkong.us/123456789</span>
 			</div>
 			<!--书单-->
 			<div class="bookInfo">
 				<!--单本书的详细信息-->
+				<?php $i = 0; foreach ($booklist as $row):?>
 				<div class="book">
-					<span class="name">书名:CSS3</span>
-					<span class="price">价格:22元</span>
-					<span class="discount">折扣:8折</span>
-					<span class="disPrice">折后单价:17.6元</span>
+					<span class="name">书名:<?php echo $row['bookname'];?></span>
+					<span class="price">价格:<?php echo $row['bookprice'];?>元</span>
+					<span class="discount">折扣:<?php echo $row['discount'];?>折</span>
+					<span class="disPrice">折后单价:<?php echo ($row['discount']*$row['bookprice']/10);?>元</span>
 					<span class="num">人数:22人</span>
 					<span class="sumPrice">折后总价:387.2元</span>
-					<a href="#" class="show" id="show">展开︾</a>
+					<a href="javascript:void(0);" class="show" index="">展开︾</a>
 				</div>
 				<!--学生姓名学号-->
-				<div class="stuInfo" id="stuInfo">
+				<div class="stuInfo" id="stuInfo<?php echo $i++;?>">
 					<span class="stuName">姓名：</span><span class="stuNum">学号：</span>
 					<span class="stuName">姓名：</span><span class="stuNum">学号：</span>
 					<span class="stuName">姓名：</span><span class="stuNum">学号：</span>
 					<span class="stuName">姓名：</span><span class="stuNum">学号：</span>
 					<span class="stuName">姓名：</span><span class="stuNum">学号：</span>
 				</div>
+				<?php  endforeach;?>
 			</div>
 			<!--底下总价栏-->
-			<div class="sumPriceCon">
+			<div class="sumPriceCon" style="display:block">
 				<span class="allSumPrice">总价：200元</span>
 			</div>
 		</div>	
@@ -61,7 +88,7 @@
 				</div>
 			</div>
 		
-		
+			<script src="js/zepto.min.js"></script>
 			<script type="text/javascript">
 				var dialog = document.getElementById('dialog');
 				var publish = document.getElementById('publish');
@@ -71,33 +98,47 @@
 					/*maskCon.style.zIndex = 1;*/
 					maskCon.style.display = 'block';
 					maskCon.style.backgroundColor = "rgba(0,0,0,0.6)";
-				}
+				};
 				clsoeBtn.onclick = function(){
 					/*maskCon.style.zIndex = -1;*/
 					maskCon.style.display = 'none';
 					maskCon.style.backgroundColor = "rgba(0,0,0,0)";
-				}
+				};
 			</script>
 			
 			<script type="text/javascript">
-				var stu = document.getElementById('stuInfo').getElementsByTagName('span');
-				var stuNum = Math.ceil(stu.length/4);
-				var showBtn = document.getElementById('show');
-				var stuInfo = document.getElementById('stuInfo');
-				var isShow = true;
-				showBtn.onclick = function(){
-					if(isShow){
-						stuInfo.style.borderBottom = '1px solid #000000';
-						stuInfo.style.height = stuNum*55 + 'px';
-						stuInfo.style.opacity = 1;
-						isShow = false;
-					}else{
-						stuInfo.style.borderBottom = '1px solid #ffffff';
-						stuInfo.style.height = 0 + 'px';
-						stuInfo.style.opacity = 0;
-						isShow = true;
+				window.onload=function(){
+					var stu = $('.stuInfo span');
+					var stuNum = Math.ceil(stu.length/4);
+					var showBtn = $('.show');
+					var stuInfo = $('.stuInfo');
+					var isShow = true;
+
+					for(var i = 0; i < showBtn.length; i++){
+						showBtn[i].index = i;
+						showBtn[i].onclick = function(){
+							var index = $(this)[0].index;
+							if(isShow){
+								stuInfo[index].style.borderBottom = '1px solid #000000';
+								stuInfo[index].style.height = stuNum*55 + 'px';
+								stuInfo[index].style.opacity = 1;
+								isShow = false;
+							}else{
+								stuInfo[index].style.borderBottom = '1px solid #ffffff';
+								stuInfo[index].style.height = 0 + 'px';
+								stuInfo[index].style.opacity = 0;
+								isShow = true;
+							}
+						};
 					}
-				}
+				};
+			</script>
+
+			<script>
+				window.onload=function(){
+					var disPrice = $('.disPrice');
+					console.log(disPrice[0].innerHTML);
+				};
 			</script>
 	</body>
 

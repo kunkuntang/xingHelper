@@ -35,6 +35,9 @@ function insert($table,$array){
 function update($table,$array,$where = null){
 	//update $table set AAA='aaa', BBB='bbb', CCC='ccc'; 
 	//update $table set AAA='aaa', BBB='bbb', CCC='ccc' where id='number';  id='number'即是$where;
+	echo "<br/>";
+	print_r($array);
+	$str = null;
 	foreach ($array as $key => $val) {
 		if($str==null){
 			$sep="";
@@ -44,19 +47,24 @@ function update($table,$array,$where = null){
 		$str.=$sep.$key."='".$val."'";
 	}
 	$sql = "update {$table} set {$str} ".($where=null?null:"where ".$where);
+	echo "<br/>";
+	echo $sql;
 	$result = mysql_query($sql);
-	if($result){
+	/*if($result){
 		return mysql_affected_rows();
 	}else{
 		return false;
-	}
+	}*/
+	return $result;
 }
 
 //删除数据
 function delete($table,$where=null){
-	$where = $where==null?null:" where".$where;
+	$where = $where==null?null:" where ".$where;
 	//delete from $table where id = 'number';
 	$sql = "delete from {$table} {$where}";
+	/*echo $sql;
+	exit();*/
 	mysql_query($sql);
 	return mysql_affected_rows();
 }
@@ -65,7 +73,7 @@ function delete($table,$where=null){
 function fetchOne($sql,$result_type=MYSQL_ASSOC){
 	//$sql="select id,username,password,email from ${table} where id='{$id}'";
 	$result = mysql_query($sql);
-	$row = mysql_fetch_array($resul,$result_type);
+	$row = mysql_fetch_array($result,$result_type);
 	return $row;
 }
 

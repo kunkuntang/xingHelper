@@ -44,7 +44,7 @@ html,body{
 	margin: 0 auto;
 }
 
-#list{
+.list{
 	width: 860px;
 	height: 100px;
 	text-align: center;

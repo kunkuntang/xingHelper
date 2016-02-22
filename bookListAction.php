@@ -1,6 +1,7 @@
 <?php
 header("Content-type:text/html;charset=utf-8");
 require_once 'lib/mysql.func.php';
+require_once 'lib/alertMes.php';
 $isLink = connect();
 if(!$isLink){
 	exit("数据库转接失败！");
@@ -9,22 +10,79 @@ if(!$isLink){
 
 function saveBookList($arr){
 	//var_dump($arr);
-	print_r($arr);
+	//print_r($arr);
 	$bookSumNum = $arr['bookSumNum'];
 	$bookListName = $arr['bookListName'];
 	$sql = "insert booklistname (booklistname) values ('{$bookListName}')";
-	$result = mysql_query($sql);
-	if(!$result)	exit("插入书名出错！");
+	mysql_query($sql);
+	$bookListId = mysql_insert_id();
+	if(!$bookListId)	alertMes("插入书名出错！","adIndex.php");
+
+	/*$sql = "insert booklist (listcode) values ('{$bookListId}')";
+	mysql_query($sql);
+	$result = mysql_insert_id();
+	if($result)	exit("插入书名号出错！");*/
+
 	for($i=1;$i<=$bookSumNum;$i++){
 		$bookArray['book'.$i]['bookName']=$arr['bookName'.$i];
 		$bookArray['book'.$i]['bookprice']=$arr['price'.$i];
 		$bookArray['book'.$i]['discount']=$arr['discount'.$i];
-		//$bookArray['book'.$i]['bookName']=$arr['bookName'.$i];
+		$bookArray['book'.$i]['listcode']=$bookListId;
 	}
 	foreach ($bookArray as $array => $val) {
 		print_r($array);
 		$result = insert("booklist",$bookArray[$array]);
-		if(!$result)	exit("插入数据出错！");
+		if(!$result)	alertMes("插入数据出错！","adIndex.php");
 	}
 	return $result;
+}
+
+function deleteBookList($id){
+	if(delete("booklist","id={$id}")){
+		$mes = true;
+	}else{
+		$mes = false;
+	}
+	return $mes;
+}
+
+function deleteListName($id){
+	if(delete("booklistname","id={$id}")){
+		$mes = true;
+	}else{
+		$mes = false;
+	}
+	return $mes;
+}
+
+function updateListName($id,$arr){
+	
+	//print_r($arr);
+	echo "<br/>";
+	$bookSumNum = $arr['bookSumNum'];
+	$bookListName = $arr['bookListName'];
+	$sql = "update booklistname set booklistname='{$bookListName}' where id={$id}";
+	//echo $sql;
+	$result = mysql_query($sql);
+	
+	if(!$result)	alertMes("插入书名出错！","adIndex.php");
+	
+	for($i=1;$i<=$bookSumNum;$i++){
+		$bookArray['book'.$i]['bookName']=$arr['bookName'.$i];
+		$bookArray['book'.$i]['bookprice']=$arr['price'.$i];
+		$bookArray['book'.$i]['discount']=$arr['discount'.$i];
+		$bookArray['book'.$i]['id']=$arr['bookListId'.$i];;
+	}
+	print_r($bookArray);
+	foreach ($bookArray as $array => $val) {
+		print_r($bookArray[$array]);
+		//exit();
+		$result = update("booklist",$bookArray[$array],"id={$bookArray[$array]['id']}");
+		if(!$result){
+			alertMes("插入数据出错！","adIndex.php");
+		}else{
+			alertMes("修改成功！","adIndex.php");
+		}
+	}
+	
 }

@@ -6,6 +6,7 @@ html,body{
 
 /*头部部分*/
 .header {
+	min-width: 1024px;
 	width: 100%;
 	background-color: rgb(102,102,102);
 }
@@ -24,6 +25,7 @@ html,body{
 /*body部分*/
 .body{
 	width: 100%;
+	min-width: 1024px;
 }
 .body .title {
 	width: 1000px;
@@ -36,6 +38,12 @@ html,body{
 .body .title span{
 	display: block;
 	line-height: 120px;
+}
+.body .title a{
+	font-size: 16px;
+	float: right;
+	margin-right: 15px;
+	margin-top: 80px;
 }
 .body .title .bookListName{
 	font-size: 40px;
@@ -56,6 +64,7 @@ html,body{
 	margin: 0 auto;
 	width: 900px;
 	overflow: hidden;
+	margin-bottom: 100px;
 }
 .body .bookInfo .book {
 	/*margin: 0 auto;*/
