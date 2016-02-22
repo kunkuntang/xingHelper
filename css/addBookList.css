@@ -31,7 +31,7 @@ html,body{
 	width: 1024px;
 	margin: 0 auto;
 }
-.body .body_con a{
+.body .body_con .title a{
 	font-size: 16px;
 	float: right;
 	margin-right: 15px;

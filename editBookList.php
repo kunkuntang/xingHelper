@@ -64,7 +64,6 @@
 				</div>
 						<div class="fun">
 							<input class="publish btn small" type="submit" id="" value="提交" form="bookShelf" />
-							<a class="save btn small" href="doAction.php?act=edit&id=<?php echo $id;?>">保存</a>
 						</div>
 			</div>
 		</div>

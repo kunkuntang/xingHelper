@@ -6,13 +6,13 @@
 		exit("数据库转接失败！");
 	}
 	$id = $_REQUEST['id'];
-	$sql = "select booklistname from booklistname where id={$id}";
+	$sql = "select booklistname,url from booklistname where id={$id}";
 	$listname = fetchOne($sql);
 
 	$sql = "select * from booklist";
 	$totalRow = getResultRow($sql);
 	if($totalRow){
-		$sql = "select bookname,bookprice,discount from booklist where listcode={$id}";
+		$sql = "select bookname,bookprice,discount,buynum from booklist where listcode={$id}";
 		
 		$booklist = fetchAll($sql);
 	}else{
@@ -45,7 +45,7 @@
 				<div class="btn middle publish" id="publish">发布</div>
 				<a class="back" href="adIndex.php">返回</a>
 				<span class="bookListName"><?php echo $listname['booklistname'];?></span>
-				<span class="link">链接：www.xingkong.us/123456789</span>
+				<span class="link">链接：<?php echo $listname['url'];?></span>
 			</div>
 			<!--书单-->
 			<div class="bookInfo">
@@ -56,8 +56,8 @@
 					<span class="price">价格:<?php echo $row['bookprice'];?>元</span>
 					<span class="discount">折扣:<?php echo $row['discount'];?>折</span>
 					<span class="disPrice">折后单价:<?php echo ($row['discount']*$row['bookprice']/10);?>元</span>
-					<span class="num">人数:22人</span>
-					<span class="sumPrice">折后总价:387.2元</span>
+					<span class="num">人数:<?php echo $row['buynum'];?>人</span>
+					<span class="sumPrice">折后总价:<?php echo $row['buynum']*$row['discount']*$row['bookprice']/10;?>元</span>
 					<a href="javascript:void(0);" class="show" index="">展开︾</a>
 				</div>
 				<!--学生姓名学号-->
@@ -131,13 +131,6 @@
 							}
 						};
 					}
-				};
-			</script>
-
-			<script>
-				window.onload=function(){
-					var disPrice = $('.disPrice');
-					console.log(disPrice[0].innerHTML);
 				};
 			</script>
 	</body>
