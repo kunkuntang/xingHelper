@@ -56,16 +56,16 @@ function deleteListName($id){
 }
 
 function updateListName($id,$arr){
-	
+	mysql_query("BEGIN");
 	//print_r($arr);
 	echo "<br/>";
 	$bookSumNum = $arr['bookSumNum'];
 	$bookListName = $arr['bookListName'];
 	$sql = "update booklistname set booklistname='{$bookListName}' where id={$id}";
 	//echo $sql;
-	$result = mysql_query($sql);
+	$result1 = mysql_query($sql);
 	
-	if(!$result)	alertMes("插入书名出错！","adIndex.php");
+	//if(!$result1)	alertMes("插入书名出错！","adIndex.php");
 	
 	for($i=1;$i<=$bookSumNum;$i++){
 		$bookArray['book'.$i]['bookName']=$arr['bookName'.$i];
@@ -74,15 +74,19 @@ function updateListName($id,$arr){
 		$bookArray['book'.$i]['id']=$arr['bookListId'.$i];;
 	}
 	print_r($bookArray);
+	
+	
 	foreach ($bookArray as $array => $val) {
 		print_r($bookArray[$array]);
 		//exit();
-		$result = update("booklist",$bookArray[$array],"id={$bookArray[$array]['id']}");
-		if(!$result){
-			alertMes("插入数据出错！","adIndex.php");
-		}else{
-			alertMes("修改成功！","adIndex.php");
-		}
+		$result2 = update("booklist",$bookArray[$array],"id={$bookArray[$array]['id']}");
 	}
-	
+	if($result1 && $result2){
+		mysql_query("COMMIT");
+	alertMes("修改成功！","adIndex.php");	
+	}else{
+		mysql_query("ROLLBACK");
+		alertMes("插入数据出错！","adIndex.php");
+	}
+	mysql_query("END");
 }

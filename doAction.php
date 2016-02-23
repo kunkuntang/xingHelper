@@ -7,7 +7,20 @@ $id =@ $_REQUEST['id'];
 $arr = $_REQUEST;
 
 if($act == 'publish'){
-
+	$url = "buyBook.php?booklist={$id}";
+	$sql = "select url from booklistname where id={$id}";
+	$result = fetchOne($sql);
+	if($result['url'] == null){
+		$sql = "update booklistname set url = 'localhost/xingHelper/{$url}' where id={$id}";
+		$result = mysql_query($sql);
+		if($result){
+			echo $url; 
+		}else{
+			echo "error";
+		}
+	}else{
+		echo $url;
+	}
 }elseif($act == 'save'){
 	$result = saveBookList($arr);
 	if($result){
@@ -45,9 +58,25 @@ if($act == 'publish'){
 	mysql_query("END");
 	
 }elseif($act == 'edit'){
-	mysql_query("BEGIN");
+	
 	updateListName($id,$arr);
 
-	mysql_query("COMMIT");
-	mysql_query("END");
+	
+}elseif($act == 'buy'){
+	$booklistId = $arr['booklistId'];
+	unset($arr['act']);
+	unset($arr['booklistId']);
+	foreach ($arr as $key => $val) {
+		$sql = "select buynum from booklist where id={$key}";
+		$buyNum = fetchOne($sql);	
+		$buyNum = $buyNum['buynum'] + 1;		
+		$sql = "update booklist set buyNum = '{$buyNum}' where id={$key}";
+		mysql_query($sql);
+		$result = mysql_affected_rows();
+	}
+	if($result){
+		alertMes("购买成功！！","buybook.php?booklist={$booklistId}");
+	}else{
+		alertMes("购买失败！！","buybook.php?booklist={$booklistId}");
+	}
 }

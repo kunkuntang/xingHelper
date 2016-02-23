@@ -82,8 +82,8 @@
 					<div class="title">分享</div>
 					<div class="content">
 						<p>复制链接后发送到需要购买的人：</p>
-						<a href="#">复制链接</a>
-						<span>www.xingkong.us/123456789</span>
+						
+						<a id="bookListUrl" href="#"></a>
 					</div>
 				</div>
 			</div>
@@ -96,8 +96,30 @@
 				var maskCon = document.getElementById('mask');
 				publish.onclick = function(){
 					/*maskCon.style.zIndex = 1;*/
-					maskCon.style.display = 'block';
-					maskCon.style.backgroundColor = "rgba(0,0,0,0.6)";
+					$.ajax({
+						type: 'post',
+						url: 'doAction.php',
+						data: {act: 'publish',id: <?php echo $id;?>},
+						datatype: 'json',
+						success: function(data){
+							if(data != 'error'){
+								console.log(data);
+								maskCon.style.display = 'block';
+								maskCon.style.backgroundColor = "rgba(0,0,0,0.6)";
+								$("#bookListUrl").text("http://localhost/xingHelper/"+data);
+								$("#bookListUrl").attr('href',data);
+							}else{
+								alert("发布失败！");
+							}
+							
+						},
+						error: function(XMLHttpRequest, textStatus, errorThrown){
+							console.log(XMLHttpRequest.status);
+	                        console.log(XMLHttpRequest.readyState);
+	                        console.log(textStatus);
+							alert('发布失败！');
+						}
+					});
 				};
 				clsoeBtn.onclick = function(){
 					/*maskCon.style.zIndex = -1;*/
