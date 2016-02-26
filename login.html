@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>星助手</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/login.css" />
+	</head>
+
+	<body>
+		<div class="logo"></div>
+		<div class="container">
+			<form class="info" action="doAction.php?act=login" method="post">
+				<label class="title">用户名</label>
+				<input type="text" id="username" name="username" />
+				<label class="title">密码</label>
+				<input type="text" id="password" name="password" />
+				<input type="checkbox" id="remember" />记住密码
+				<a href="register.html">注册</a>
+				<input type="submit" id="submit" class="btn small" />
+			</form>
+		</div>
+	</body>
+</html>

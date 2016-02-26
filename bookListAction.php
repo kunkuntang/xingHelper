@@ -8,12 +8,17 @@ if(!$isLink){
 }
 
 
-function saveBookList($arr){
+function saveBookList($arr,$adminId){
 	//var_dump($arr);
 	//print_r($arr);
+	/*for($i=21;$i<=29;$i++){
+		$sql = "delete from bookListname where id={$i}";
+		mysql_query($sql);
+	}
+	exit();*/
 	$bookSumNum = $arr['bookSumNum'];
 	$bookListName = $arr['bookListName'];
-	$sql = "insert booklistname (booklistname) values ('{$bookListName}')";
+	$sql = "insert booklistname (booklistname,admincode) values ('{$bookListName}','{$adminId}')";
 	mysql_query($sql);
 	$bookListId = mysql_insert_id();
 	if(!$bookListId)	alertMes("插入书名出错！","adIndex.php");
@@ -32,7 +37,7 @@ function saveBookList($arr){
 	foreach ($bookArray as $array => $val) {
 		print_r($array);
 		$result = insert("booklist",$bookArray[$array]);
-		if(!$result)	alertMes("插入数据出错！","adIndex.php");
+		if(!$result)	alertMes("插入数据出错！","adIndex.php?adminId={$adminId}");
 	}
 	return $result;
 }

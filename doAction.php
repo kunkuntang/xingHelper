@@ -4,6 +4,7 @@ require_once 'bookListAction.php';
 require_once 'lib/alertMes.php';
 $act = $_REQUEST['act'];
 $id =@ $_REQUEST['id'];
+$adminId = $_REQUEST['adminId'];
 $arr = $_REQUEST;
 
 if($act == 'publish'){
@@ -22,11 +23,11 @@ if($act == 'publish'){
 		echo $url;
 	}
 }elseif($act == 'save'){
-	$result = saveBookList($arr);
+	$result = saveBookList($arr,$adminId);
 	if($result){
-		alertMes("保存成功！", "adIndex.php");
+		alertMes("保存成功！", "adIndex.php?adminId={$adminId}");
 	}else{
-		alertMes("保存失败！", "adIndex.php");
+		alertMes("保存失败！", "adIndex.php?adminId={$adminId}");
 	}
 }elseif($act == 'delList'){
 	/*
@@ -40,20 +41,18 @@ if($act == 'publish'){
 	}
 	*/
 
-	
 	//开启了事务，有回滚
 	mysql_query("BEGIN");
 	$sql = "delete from booklistname where id={$id}";
-	//echo $sql;
 	$isDelBookList = mysql_query($sql);
-	$sql = "delete from booklist where id={$id}";
+	$sql = "delete from booklist where listcode={$id}";
 	$isDelListName = mysql_query($sql);
 	if($isDelBookList && $isDelListName){  
 	 	mysql_query("COMMIT");  
-		alertMes("删除成功！","adIndex.php");
+		alertMes("删除成功！","adIndex.php?adminId={$adminId}");
 	}else{  
 		mysql_query("ROLLBACK");  
-		alertMes("删除失败！","adIndex.php");
+		alertMes("删除失败！","adIndex.php?adminId={$adminId}");
 	}
 	mysql_query("END");
 	
@@ -109,5 +108,30 @@ if($act == 'publish'){
 		array_push($result, $row['bookId']);
 	}
 	echo json_encode($result);
-	exit();
+}elseif($act == 'login'){
+	print_r($arr);
+	$username = $arr['username'];
+	$password = $arr['password'];
+	$sql = "select password,id from administrator where username='{$username}'";
+	echo $sql;
+	//exit();
+	$result = fetchOne($sql);
+	if($result['password'] == $password){
+		alertMes("登录成功！！！","adIndex.php?adminId={$result['id']}");
+	}else{
+		alertMes("登录失败！！！","login.html");
+	}
+}elseif($act == "regist"){
+	print_r($arr);
+	$username = $arr['username'];
+	$password = $arr['password'];
+	$sql = "insert administrator (username,password) values ('{$username}','{$password}')";
+	echo $sql;
+	mysql_query($sql);
+	$result = mysql_insert_id();
+	if($result){
+		alertMes("注册成功！请登录","login.html");
+	}else{
+		alertMes("注册失败！！请重新注册","register.php");
+	}
 }
