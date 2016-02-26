@@ -90,7 +90,7 @@ function fetchAll($sql,$result_type=MYSQL_ASSOC){
 //得到结果集中的条数
 function getResultRow($sql){
 	//$sql = "select * from ${table}";
-	$result = mysql_query($sql);
+	$result =@ mysql_query($sql);
 	return mysql_num_rows($result);
 }
 
