@@ -5,6 +5,7 @@
 	if(!$isLink){
 		exit("数据库转接失败！");
 	}
+	$adminId = 
 	$id = $_REQUEST['id'];
 	$sql = "select booklistname,url from booklistname where id={$id}";
 	$listname = fetchOne($sql);
@@ -43,7 +44,7 @@
 			<!--书单名-->
 			<div class="title"> 
 				<div class="btn middle publish" id="publish">发布</div>
-				<a class="back" href="adIndex.php">返回</a>
+				<a class="back" href="adIndex.php?adminId=<?php echo $id;?>">返回</a>
 				<span class="bookListName"><?php echo $listname['booklistname'];?></span>
 				<span class="link">链接：<?php echo $listname['url'];?></span>
 			</div>

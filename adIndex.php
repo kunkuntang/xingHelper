@@ -41,9 +41,9 @@ if($totalRow){
 				<div class="BookList">
 				<?php foreach ($rows as $row): ?>
 					<div class="list">
-						<a class="bookName" href="checkBookList.php?id=<?php echo $row['id'] ?>"><?php echo $row['booklistname']; ?></a>
+						<a class="bookName" href="checkBookList.php?id=<?php echo $row['id'] ?>&adminId=<?php echo $adminId ;?>"><?php echo $row['booklistname']; ?></a>
 						<span class="link"></span>
-						<div class="btn middle publish" onclick="doAction.php?act=publish">发布</div>
+						<div class="btn middle publish" onclick="publish(<?php echo $row['id'];?>)">发布</div>
 						<a href="editBookList.php?id=<?php echo $row['id'];?>">编辑</a>
 						<a onclick="delList(<?php echo $row['id'];?>,<?php echo $adminId;?>)">删除</a>
 					</div>
@@ -59,6 +59,9 @@ if($totalRow){
 			if(window.confirm("确定要删除吗？")){
 				window.location="doAction.php?act=delList&id="+id+"&adminId="+adminId;
 			}
+		}
+		function publish(id){
+			window.location="doAction.php?act=publish&id="+id;
 		}
 	</script>
 </html>

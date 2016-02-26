@@ -4,7 +4,7 @@ require_once 'bookListAction.php';
 require_once 'lib/alertMes.php';
 $act = $_REQUEST['act'];
 $id =@ $_REQUEST['id'];
-$adminId = $_REQUEST['adminId'];
+$adminId =@ $_REQUEST['adminId'];
 $arr = $_REQUEST;
 
 if($act == 'publish'){
@@ -114,7 +114,6 @@ if($act == 'publish'){
 	$password = $arr['password'];
 	$sql = "select password,id from administrator where username='{$username}'";
 	echo $sql;
-	//exit();
 	$result = fetchOne($sql);
 	if($result['password'] == $password){
 		alertMes("登录成功！！！","adIndex.php?adminId={$result['id']}");
@@ -132,6 +131,6 @@ if($act == 'publish'){
 	if($result){
 		alertMes("注册成功！请登录","login.html");
 	}else{
-		alertMes("注册失败！！请重新注册","register.php");
+		alertMes("注册失败！！请重新注册","register.html");
 	}
 }
