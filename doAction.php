@@ -75,9 +75,14 @@ if($act == 'publish'){
 		$buyNum = fetchOne($sql);	
 		$buyNum = $buyNum['buynum'] + 1;		
 		$sql = "update booklist set buyNum = '{$buyNum}' where id={$key}";
+		echo "<br/>";
+		echo $sql;
 		$result1 = mysql_query($sql);
 		$sql = "insert userlist (username,usernum,bookid) values ('{$username}','{$usernum}','{$key}')";
 		$result2 = mysql_query($sql);
+		echo "<br/>";
+		echo $sql;
+		
 		if($result2 && $result1){
 			mysql_query("COMMIT");
 			$result = true;
@@ -85,7 +90,8 @@ if($act == 'publish'){
 			mysql_query("ROLLBACK");
 			$result = false;
 		}
-	}   
+	}  
+	exit();
 	if($result){
 		alertMes("购买成功！！","buybook.php?booklist={$booklistId}");
 	}else{

@@ -14,7 +14,7 @@ html,document{
 
 .container{
 	width: 500px;
-	height: 270px;
+	height: 350px;
 	margin: 0 auto;
 	border: 1px solid #626262;
 	padding: 30px 0;
@@ -26,15 +26,23 @@ html,document{
 	font-size: 16px;
 }
 .container #username,
-.container #password{
+.container .password{
 	width: 250px;
 	height: 30px;
 	display: block;
-	margin: 10px 0 20px 0;
+	margin: 10px 0 5px 0;
 }
 .container #submit{
 	display: block;
 	margin-top: 15px;
 	position: relative;
 	left: 160px;
+}
+.container .tip{
+	height: 16px;
+	font-size: 14px;
+	font-style: normal;
+	display: block;
+	visibility: hidden;
+	margin: 10px 0 20px 15px;
 }

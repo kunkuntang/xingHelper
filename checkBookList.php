@@ -5,15 +5,15 @@
 	if(!$isLink){
 		exit("数据库转接失败！");
 	}
-	$adminId = 
-	$id = $_REQUEST['id'];
+	$adminId = $_REQUEST['adminId'];//接收传来的用户Id
+	$id = $_REQUEST['id'];//接受传来的书单id
 	$sql = "select booklistname,url from booklistname where id={$id}";
 	$listname = fetchOne($sql);
 
 	$sql = "select * from booklist";
 	$totalRow = getResultRow($sql);
 	if($totalRow){
-		$sql = "select bookname,bookprice,discount,buynum from booklist where listcode={$id}";
+		$sql = "select bookname,bookprice,discount,buynum,id from booklist where listcode={$id}";
 		
 		$booklist = fetchAll($sql);
 	}else{
@@ -44,7 +44,7 @@
 			<!--书单名-->
 			<div class="title"> 
 				<div class="btn middle publish" id="publish">发布</div>
-				<a class="back" href="adIndex.php?adminId=<?php echo $id;?>">返回</a>
+				<a class="back" href="adIndex.php?adminId=<?php echo $adminId;?>">返回</a>
 				<span class="bookListName"><?php echo $listname['booklistname'];?></span>
 				<span class="link">链接：<?php echo $listname['url'];?></span>
 			</div>
@@ -63,11 +63,12 @@
 				</div>
 				<!--学生姓名学号-->
 				<div class="stuInfo" id="stuInfo<?php echo $i++;?>">
-					<span class="stuName">姓名：</span><span class="stuNum">学号：</span>
-					<span class="stuName">姓名：</span><span class="stuNum">学号：</span>
-					<span class="stuName">姓名：</span><span class="stuNum">学号：</span>
-					<span class="stuName">姓名：</span><span class="stuNum">学号：</span>
-					<span class="stuName">姓名：</span><span class="stuNum">学号：</span>
+					<?php 
+						$sql = "select username,usernum from userlist where bookid={$row['id']}";
+						$users =@ fetchAll($sql);
+					foreach ($users as $user):?>
+					<span class="stuName">姓名：<?php echo $user['username'];?></span><span class="stuNum">学号：<?php echo $user['usernum'];?></span>
+				<?php  endforeach;?>	
 				</div>
 				<?php  endforeach;?>
 			</div>
