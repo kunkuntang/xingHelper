@@ -56,7 +56,7 @@
 					<span class="name">书名:<?php echo $row['bookname'];?></span>
 					<span class="price">价格:<?php echo $row['bookprice'];?>元</span>
 					<span class="discount">折扣:<?php echo $row['discount'];?>折</span>
-					<span class="disPrice">折后单价:<?php echo $row['bookprice']*$row['discount'];?>元</span>
+					<span class="disPrice">折后单价:<?php echo $row['bookprice']*$row['discount']/10;?>元</span>
 					<input type="checkbox" name="<?php echo $row['id'];?>" id="<?php echo $row['id'];?>" />
 					<label for="buyBook">购买</label>
 				</div>

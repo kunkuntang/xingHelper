@@ -90,8 +90,7 @@ if($act == 'publish'){
 			mysql_query("ROLLBACK");
 			$result = false;
 		}
-	}  
-	exit();
+	}  	
 	if($result){
 		alertMes("购买成功！！","buybook.php?booklist={$booklistId}");
 	}else{

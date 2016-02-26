@@ -5,7 +5,8 @@
 	if(!$isLink){
 		exit("数据库转接失败！");
 	}
-	$id = $_REQUEST['id'];
+	$id = $_REQUEST['id'];//接受传来的书单id
+	$adminId = $_REQUEST['adminId'];//接收管理员用户ID
 	$sql = "select booklistname from booklistname";
 	$booklistname = fetchOne($sql);
 	//$sql = "select * from booklistname where listcode={$id}";
@@ -42,7 +43,7 @@
 					<div class="listName" id="listName"><?php echo $booklistname['booklistname'];?></div>
 					<input type="text" value="" placeholder="" id="tempListName" style="display:none" class="listName">
 					<div class="edit btn small" id="listEdit">编辑</div>
-					<a class="back" href="adIndex.php">返回</a>
+					<a class="back" href="adIndex.php?adminId=<?php echo $adminId;?>">返回</a>
 				</div>
 				<div class="bookList">
 					<form id="bookShelf" action="doAction.php?act=edit&id=<?php echo $id;?>" method="post" name="bookShelf">

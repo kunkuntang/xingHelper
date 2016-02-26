@@ -50,11 +50,12 @@ html,body{
 }
 .bookHead .stuInfo input{
 	width: 200px;
-	margin-right: 140px;
+	margin-right: 80px;
 	height: 20px;
 }
 .bookHead .stuInfo .buy{
 	float: right;
+	margin-right: 15px;
 }
 
 

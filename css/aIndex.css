@@ -1,0 +1,147 @@
+html,body{
+	width: 100%;
+}
+
+/*头部部分*/
+.header {
+	width: 100%;
+	background-color: rgb(102,102,102);
+}
+.header_con{
+	width: 1024px;
+	height: 75px;
+	margin: 0 auto;
+	padding-top: 20px;
+}
+.header .header_con .logo{
+	width: 103px;
+	height: 57px;
+	background: url(../img/logo.png) left center no-repeat;	
+}
+
+/*body部分*/
+.body{
+	width: 100%;
+}
+.body .body_con{
+	width: 1024px;
+	margin: 0 auto;
+}
+.body .body_con .addPart{
+	width: 100%;
+	height: 60px;
+	border-bottom: 2px solid #000000;
+	margin: 0 auto;
+}
+.body .body_con .addPart #add{
+	margin-top: 20px;
+	margin-left: 40px;
+}
+
+.body .body_con .BookList {
+	width: 900px;
+	border-bottom: 1px solid #ccc;
+	margin: 0 auto;
+}
+
+.list{
+	width: 860px;
+	height: 100px;
+	text-align: center;
+	padding-right: 0px;
+	padding-left: 20px;
+}
+
+.body .body_con .BookList .bookName,
+.body .body_con .BookList .link {
+	display: block;
+	float: left;
+	margin-right: 60px;
+	margin-top: 20px;
+}
+.body .body_con .BookList .bookName {
+	line-height: 60px;
+	font-size: 40px;
+	width: 110px;
+	height: 60px;
+	cursor: pointer;
+	overflow: hidden;
+}
+.body .body_con .BookList .link {
+	line-height: 60px;
+	font-size: 16px;
+	width: 400px;
+	height: 60px;
+}
+.body .body_con .BookList a,
+.body .body_con .BookList .publish{
+	margin-top: 30px;
+	line-height: 40px;
+	float: right;
+	cursor: pointer;
+}
+.body .body_con .BookList a {
+	font-size: 14px;
+	display: block;
+	margin-right: 30px;
+}
+
+.body .body_con .BookList .publish{
+	float: right;
+	font-size: 16px;
+}
+
+/*遮罩层*/
+.mask {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.6);
+	/*z-index: -1;*/
+	display: none;
+	transition: background-color 1s ease;
+}
+.mask .dialog{
+	background-color: #ffffff;
+	width: 600px;
+	height: 400px;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	margin-left: -300px;
+	margin-top: -200px;
+}
+.mask .dialog .close{
+	position: relative;
+	right: 20px;
+	top: 15px;
+	width: 32px;
+	height: 32px;
+	float: right;
+	background: url(../img/icon_close.png) left center no-repeat;
+	cursor: pointer;
+}
+.mask .dialog .title{
+	padding: 30px 60px;
+	font-size: 36px;
+}
+.mask .dialog .content{
+	border-top: 1px solid #CCCCCC;
+	width: 500px;
+	height: 50px;
+	font-size: 18px;
+	padding: 50px 10px;
+	margin: 0 20px;
+}
+.mask .dialog .content span,
+.mask .dialog .content a{
+	margin-top: 50px;
+	float: right;
+	margin-right: 30px;
+}
+.mask .dialog .content a{
+	text-decoration: underline;
+	color: blue;
+}

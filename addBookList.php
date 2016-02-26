@@ -1,6 +1,5 @@
 <?php
-	$adminId = $_REQUEST['adminId'];
-
+	$adminId = $_REQUEST['adminId'];//接收管理员用户ID
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +25,7 @@
 					<div class="listName" id="listName">书单1</div>
 					<input type="text" value="" placeholder="" id="tempListName" style="display:none" class="listName">
 					<div class="edit btn small" id="listEdit">编辑</div>
-					<a class="back" href="adIndex.php">返回</a>
+					<a class="back" href="adIndex.php?adminId=<?php echo $adminId;?>">返回</a>
 				</div>
 				<div class="bookList">
 					<form id="bookShelf" action="doAction.php?act=save&adminId=<?php echo $adminId;?>" method="post" name="bookShelf">
@@ -44,8 +43,7 @@
 						<div id="add" class="add btn small">添加</div>
 				</div>
 						<div class="fun">
-							<input class="publish btn small" type="submit" id="" value="提交" form="bookShelf" />
-							<a class="publish btn small" onclick="doAction.php?act=publish">发布</a>
+							<input class="publish btn small" type="submit" id="" value="保存" form="bookShelf" />
 						</div>
 			</div>
 		</div>
