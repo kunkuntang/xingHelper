@@ -11,13 +11,61 @@
 		<div class="container">
 			<form class="info" action="doAction.php?act=regist" method="post">
 				<label class="title">用户名</label>
-				<input type="text" id="username" name="username"/>
+				<input type="text" id="username" name="username" required onfocus="showTip(1,'请输入用户名')"  onblur="javascript:notNull($(this),1,'用户名不能为空')" />
+				<i class="tip" id="uNameTip"></i>
 				<label class="title">密码</label>
-				<input type="text" id="password" name="password"/>
+				<input type="text" id="password" class="password" name="password" required onfocus="showTip(2,'请输入密码')" onblur="javascript:notNull($(this),2,'密码不能为空')" onblur="javascript:notNull($(this))" />
+				<i class="tip" id="pWordTip"></i>
 				<label class="title">确认密码</label>
-				<input type="text" id="password" />
-				<input type="submit" id="submit" class="btn small" />
+				<input type="text" id="password2" class="password" required onfocus="showTip(3,'请再次输入密码')" onblur="javascript:comfirPassword()" />
+				<i class="tip" id="cpWordTip"></i>
+				<input type="submit" id="submit" class="btn small" disabled="disabled" />
 			</form>
 		</div>
 	</body>
+	<script src="js/zepto.min.js"></script>
+	<script type="text/javascript">
+		
+		function showTip(index,text){
+			console.log(index);
+
+			switch (index){
+				case 1: {$("#uNameTip").text(text); $("#uNameTip").css({"color":"blue","visibility":"visible"}); break;}
+				case 2: {$("#pWordTip").text(text); $("#pWordTip").css({"color":"blue","visibility":"visible"}); break;}
+				case 3: {$("#cpWordTip").text(text); $("#cpWordTip").css({"color":"blue","visibility":"visible"}); break;}
+			}
+		}
+		function notNull($this,index,text){
+			console.log($this.attr("id"))
+			if(!$this.attr("value")){
+				switch (index){
+					case 1: {$("#uNameTip").text(text); $("#uNameTip").css("color","red"); break;}
+					case 2: {$("#pWordTip").text(text); $("#pWordTip").css("color","red"); break;}
+					case 3: {$("#cpWordTip").text(text); $("#cpWordTip").css("color","red"); break;}
+				}
+			}else{
+				console.log("success")
+				switch (index){
+					case 1: {$("#uNameTip").css("visibility","hidden"); break;}
+					case 2: {$("#pWordTip").css("visibility","hidden"); break;}
+					
+				}
+			}
+		}
+		function comfirPassword(){
+			if($("#password2").attr("value")){
+				if($("#password").attr("value") != $("#password2").attr("value")){
+					$("#cpWordTip").text("两次密码不相同，请重新输入");
+					$("#cpWordTip").css("color","red");
+					$("#submit").attr("disabled","disabled");
+				}else{
+					$("#cpWordTip").css("visibility","hidden");
+					$("#submit").removeAttr("disabled");
+				}
+			}else{
+				$("#cpWordTip").text("请输入密码");
+				$("#cpWordTip").css("color","red");
+			}
+		}
+	</script> 	
 </html>
