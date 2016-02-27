@@ -6,7 +6,7 @@ if(!$isLink){
 }
 $adminId = $_REQUEST['adminId'];//接收管理员用户ID
 $sql = "select * from booklistname where admincode={$adminId}";
-$totalRow = getResultRow($sql);
+$totalRow =@ getResultRow($sql);
 if($totalRow){
 	$sql = "select booklistname,id,url from booklistname where admincode={$adminId}";
 	$rows = fetchAll($sql);
