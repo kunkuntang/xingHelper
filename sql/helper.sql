@@ -30,10 +30,9 @@ create database `xingHelper`;
 use xingHelper;
 
 CREATE TABLE IF NOT EXISTS `administrator` (
-  `adminID` int(10) unsigned zerofill NOT NULL,
-  `admincode` varchar(30) NOT NULL,
-  `admininfo` varchar(30) NOT NULL,
-  `adminphone` varchar(11) NOT NULL
+  `username` varchar(50) not null unique ,
+    `password` varchar(50) not null,
+    `id` int(10) not null auto_increment primary key
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
