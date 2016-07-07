@@ -15,7 +15,6 @@ if($totalRow){
 	echo "<script>alert( '没有书单！！请添加！！');</script>";
 }
 
-
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +35,7 @@ if($totalRow){
 		<div class="body">
 			<div class="body_con">
 				<div class="addPart">
-					<a href="addBookList.php?adminId=<?php echo $adminId;?>&adminId=<?php echo $adminId ;?>"><div id="add" class="btn big">+&nbsp;添加</div></a>
+					<a href="addBookList.php?adminId=<?php echo $adminId;?>"><div id="add" class="btn big">+&nbsp;添加</div></a>
 				</div>
 				<div class="BookList">
 				<?php foreach ($rows as $row): ?>
